@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Table</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    .right {
+      flex: 1;
+      background: url("burger.jpg") no-repeat center center/cover;
+    }
+    .left {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: bisque;
+      padding: 20px;
+    }
+    .form, .card {
+      width: 100%;
+      max-width: 450px;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+    .form h2, .card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    input, select {
+      display: block;
+      margin: 12px auto;
+      padding: 14px;
+      width: 100%;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      display: block;
+      background-color: burlywood;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      height: 50px;
+      width: 160px;
+      margin: 20px auto 0;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #d2a679;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: -8px;
+      margin-bottom: 8px;
+      text-align: left;
+    }
+    .card {
+      display: none;
+      text-align: left;
+    }
+    .card p {
+      margin: 10px 0;
+      color: #555;
+      font-size: 16px;
+    }
+    .card button {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="right"></div>
+  <div class="left">
+    <form class="form" id="form">
+      <h2>Book A Table</h2>
+      <input type="text" placeholder="Your Name" id="name">
+      <div id="nameError" class="error"></div>
+      <input type="email" placeholder="Your Email" id="email">
+      <div id="emailError" class="error"></div>
+      <input type="tel" placeholder="Your Phone" id="phone">
+      <div id="phoneError" class="error"></div>
+      <select id="person">
+        <option disabled selected hidden>How many persons?</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>  
+      </select>
+      <input type="date" id="date">
+      <button type="submit" id="submit">Book Now</button>
+    </form>
+    <div class="card" id="card">
+      <h2>Booking Confirmation</h2>
+      <p><b>Name:</b> <span id="cName"></span></p>
+      <p><b>Email:</b> <span id="cEmail"></span></p>
+      <p><b>Phone:</b> <span id="cPhone"></span></p>
+      <p><b>Date:</b> <span id="cDate"></span></p>
+      <p><b>Number of Persons:</b> <span id="cPerson"></span></p>
+      <button id="doneBtn">Done</button>
+    </div>
+  </div>
+  <script>
+    const form = document.getElementById("form");
+    const card = document.getElementById("card");
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      let name = document.getElementById("name").value.trim();
+      let email = document.getElementById("email").value.trim();
+      let phone = document.getElementById("phone").value.trim();
+      let person = document.getElementById("person").value;
+      let date = document.getElementById("date").value;
+      let nameError = document.getElementById("nameError");
+      let emailError = document.getElementById("emailError");
+      let phoneError = document.getElementById("phoneError");
+      nameError.textContent = "";
+      emailError.textContent = "";
+      phoneError.textContent = "";
+      let valid = true;
+      if(!/^[A-Za-z\s]+$/.test(name)) {
+        nameError.textContent = "Just letters allowed";
+        valid = false;
+      }
+      if(!/^[A-Za-z0-9._%+-]+@(gmail|yahoo)\.com$/.test(email)) {
+        emailError.textContent = "Enter a valid email (gmail or yahoo)";
+        valid = false;
+      }
+      if(!/^[0-9]+$/.test(phone)) {
+        phoneError.textContent = "Just numbers allowed";
+        valid = false;
+      }
+      if (valid) {
+        form.style.display = "none";
+        card.style.display = "block";
+        document.getElementById("cName").textContent = name;
+        document.getElementById("cEmail").textContent = email;
+        document.getElementById("cPhone").textContent = phone;
+        document.getElementById("cDate").textContent = date;
+        document.getElementById("cPerson").textContent = person;
+      }
+    });
+    document.getElementById("doneBtn").addEventListener("click", function() {
+      alert("The booking is done successfully!");
+      window.location.href = "Home.html";
+    });
+  </script>
+</body>
+</html>
