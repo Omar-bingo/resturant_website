@@ -1,11 +1,11 @@
 /* Navbar Transition */
-#mainNav {
+/* #mainNav {
     transition: background-color 0.5s ease;
 }
 
 #mainNav.navbar-scrolled {
     background-color: #222831;
-}
+} */
 
 /* //////////////// */
 
@@ -21,11 +21,16 @@
 }
 
 .hero-text {
+    /* margin-top: 30px; */
     position: absolute;
     top: 40%;
     /* left: 50%; */
     width: 100%;
     color: white;
+}
+
+.hero-text>h2{
+    margin-bottom: 30px;
 }
 
 .hero-text>p {
@@ -55,7 +60,7 @@
     /* color: white; */
     text-decoration: underline;
     text-underline-offset: 13px;
-    text-decoration-color: #FFBE33;
+    text-decoration-color: #E67E22;
     /* text-decoration-thickness: 1px; */
 }
 
@@ -103,7 +108,7 @@
     /* color: white; */
     text-decoration: underline;
     text-underline-offset: 13px;
-    text-decoration-color: #FFBE33;
+    text-decoration-color: #E67E22;
 }
 
 .owner-info p {
@@ -147,7 +152,7 @@
     /* color: white; */
     text-decoration: underline;
     text-underline-offset: 13px;
-    text-decoration-color: #FFBE33;
+    text-decoration-color: #E67E22;
 }
 
 .chef-info p {
@@ -179,7 +184,7 @@
     /* color: white; */
     text-decoration: underline;
     text-underline-offset: 13px;
-    text-decoration-color: #FFBE33;
+    text-decoration-color: #E67E22;
 }
 
 .team-info p {
